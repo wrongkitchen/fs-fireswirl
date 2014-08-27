@@ -1,0 +1,185 @@
+/**
+*   Import all desired scss files here
+*/
+
+// [include:base]
+@import 'base/_variables';
+@import 'base/_mixins';
+@import 'base/_global';
+@import 'base/_ie8';
+@import 'base/_reset';
+// [/include]
+
+// [include:vendor]
+@import 'vendor/_normalize';
+@import 'vendor/_bourbon';
+// [/include]
+
+/**
+*   The default folder for the styles subgenerator is `partials`
+*   If you would rather use a different folder, feel free to use the `--folder` flag
+*   and change the comment below to match your new folder.
+*   ex. `yo yeogurt:style myStyle --folder=module`
+*   Comments would be:
+*   [include:modules]
+*   [/include]
+*/
+// [include:partials]
+// [/include]
+
+$wrapper_w : 1024px;
+
+$sideBar_w : 215px;
+$sideBar_p : 20px;
+
+html, body{ width:100%; height:100%; font-family: Microsoft YaHei, Microsoft JhengHei, Apple LiGothic Medium, Arial, Helvetica, sans-serif; }
+body{ background-color: #333; position:relative; } 
+#wrapper{ 
+    width:$wrapper_w; position:relative; margin:0 auto; height: 760px; overflow: hidden;
+    .black-overlay{ 
+        width:100%; height:100%;
+        background-color: rgba(0,0,0,0.6); position:absolute; top:0; left:0; display:none; z-index:9;
+        .container{ position:relative; }
+        .close{ 
+            position:absolute; top:20px; left:20px; width:22px; height:22px; 
+            background-image: url(../images/btn-close.png); cursor: pointer;
+        }
+    }
+    #nav{ 
+        width:100%; height:60px; background-color: #ae9b7c; position: relative; @extend .animation;
+        .sidebarCaller{ 
+            margin-left:20px; width:31px; height:100%; float:left; cursor: pointer;
+            background-image: url(../images/btn-sidebar.png); background-position: center center; background-repeat: no-repeat;
+        }
+        .homeCaller{
+            margin:0 20px; width:25px; height:100%; float:left; cursor: pointer;
+            background-image: url(../images/btn-home.png); background-position: center center; background-repeat: no-repeat;
+        }
+        .navBtn{ 
+            height:60px; float:left; padding-right:30px; background-image: url(../images/arrow-down.png); position:relative;
+            background-repeat: no-repeat; background-position: center right; margin:0 20px; line-height: 60px; color:#FFF; cursor:pointer;
+            .dropdown{ 
+                position:absolute; display:none; top:60px;
+                &.dropdown1{ left:-30px; }
+                &.dropdown2{ left:-10px; }
+                &.dropdown3{ left:-40px; }
+                li{ 
+                    list-style-type: none; background-color: #ae9b7c; 
+                    display: block; padding: 10px 40px; height: 20px; line-height: normal; left:0;
+                    &.end{ padding-bottom:20px; }
+                }
+                a{ color:#FFF; font-size:12px; text-decoration: none; }
+            }
+            &.active{ 
+                .dropdown{ display:block; z-index:10; } 
+            }
+        }
+    }
+    .sidebar{ 
+        position:absolute; width:$sideBar_w; height:760px; background-color:#FFF; text-align: center; padding:0 $sideBar_p;
+        z-index:10; color:#565656;
+        .container{ position:relative; height:100%; width:215px; }
+        .logo{ 
+            width:145px; height:136px; 
+            background-image: url(../images/logo.jpg); background-repeat: no-repeat; background-position: center bottom;
+            margin:0 auto 50px auto; padding-top:90px;
+        }
+        .logoBorder{ border-bottom:1px solid #c2c2c2; width:100px; height:1px; margin:0 auto 50px auto; }
+        .upper{ font-size:23px; margin-bottom:25px; }
+        .lower{ font-size:13px; }
+        .lowest{ 
+            position:absolute; bottom:20px; font-size:12px;
+            .left, .right{ color:#727272; text-decoration: none; }
+            .left{ margin-right:10px; }
+            .right{ margin-left:10px; }
+        }
+        ul{
+            li{ 
+                list-style-type: none; padding:20px 45px; text-align: center; color:#ae9b7c; 
+                font-size:18px; cursor: pointer;
+            }
+        }
+        &.home{ left:-$sideBar_w - ($sideBar_p * 2); }
+    }
+    .previewContent{
+        position:relative; @extend .animation;
+        .preview{
+            width:100%; height:480px; overflow: hidden;
+            img{ width:100%; }
+        }
+        .selector{ 
+            background-color: #ae9b7c; padding-left:125px; height:45px;
+            .selectorBtn{ 
+                width:125px; height:40px; color:#FFF; background: transparent; text-align: center; margin-top:5px;
+                float:left; line-height:40px;
+                &.right{ float:right; border-left:1px solid #FFF;height:25px; margin:12px 0; line-height: normal; }
+                &.active{ background-color: #fff; color: #ae9b7c; } 
+            }
+        }
+        .texture{
+            text-align: center; padding-top:15px; background-color: #fff;
+            .textureBtn{ 
+                width:55px; height:28px; border:1px solid #ae9b7c; display:inline-block; margin-right:15px; 
+                color:#FFF; line-height: 29px; border-radius: 5px; color:#ae9b7c;
+                &.active{ background-color:#ae9b7c; color:#FFF; }
+            } 
+        }
+        .gallery{ 
+            width:1024px; height:140px; background-color: #fff;
+            .leftBtn{ 
+                width:30px; height:100%; float:left; 
+                background-image: url(../images/arrow-left.png); margin:0 20px;
+                background-repeat: no-repeat; background-position: center center;
+            }
+            .galleryContent{ 
+                width:884px; float:left; margin-top:15px;
+            }
+            .rightBtn{ 
+                width:30px; height:100%; float:right; margin:0 20px;
+                background-image: url(../images/arrow-right.png); 
+                background-repeat: no-repeat; background-position: center center;
+            }
+        }
+    }
+    &.active{
+        .previewContent, #nav{ left:$sideBar_w + ($sideBar_p * 2); }
+        .sidebar{ left:0; }
+        .black-overlay{ display: block; left:$sideBar_w + ($sideBar_p * 2) }
+        .sidebarCaller{ visibility: hidden; }
+
+    }
+    .homeContent{ 
+        width:$wrapper_w - $sideBar_w - ($sideBar_p * 2); 
+        height:100%; float:right; background-image:url(../images/bg-home.jpg); 
+        background-position:center right; position:relative;
+        .thumbnailGp{ 
+            width:640px; height:410px; position:absolute; top:50%; left:50%; 
+            margin-top:-205px; margin-left:-305px; 
+            .thumbnail{ 
+                float:left; margin-right:5px; margin-bottom:5px; width:315px; height:199px; position:relative;
+                overflow:hidden;
+                .overlay{ 
+                    width:100%; height:100%; top:160px; left:0;
+                    background-color: #fff; opacity: .8; text-align: center; position:absolute; 
+                    @extend .animation;
+                    .upper{ font-size:18px; color:#757575; margin-bottom:40px; margin-top:8px; @extend .animation; }
+                    .lower{ 
+                        a{ font-size:15px; color:#ae9b7c; text-decoration: none; } 
+                    }
+                    .lowerBorder{ width:120px; height:1px; border-bottom:1px solid #ae9b7c; margin:10px auto; }
+                }
+                &.thumbnail2, &.thumbnail4{ margin-right:0; }
+                &.thumbnail1{ background-image: url(../images/content-home-01.jpg); }
+                &.thumbnail2{ background-image: url(../images/content-home-02.jpg); }
+                &.thumbnail3{ background-image: url(../images/content-home-03.jpg); }
+                &.thumbnail4{ background-image: url(../images/content-home-04.jpg); }
+                &.active{ 
+                    .overlay{
+                        top:0; 
+                        .upper{ margin-top:30px; }
+                    }
+                }
+            }
+        }
+    }
+}  

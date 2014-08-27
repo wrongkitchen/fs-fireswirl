@@ -1,0 +1,25 @@
+{
+  "generator-yeogurt": {
+    "config": {
+      "projectName": "Fireswirl",
+      "versionControl": "None (I like to live on the edge)",
+      "structure": "Static Site",
+      "htmlOption": "None (Vanilla HTML)",
+      "jsOption": "None (Vanilla JavaScript)",
+      "testFramework": "Jasmine",
+      "cssOption": "SASS",
+      "useBourbon": true,
+      "cssFramework": "None",
+      "ieSupport": true,
+      "useGA": true,
+      "useFTP": true,
+      "jshint": false,
+      "useJsdoc": false,
+      "useKss": false,
+      "extras": [],
+      "html5Addons": [],
+      "jsTemplate": "React"
+    },
+    "version": "0.9.6"
+  }
+}
